@@ -1,0 +1,15 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { useState } from 'react'
+import { X, Expand } from 'lucide-react'
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
+import { PageIntro, ContactBand } from '@/components/site'
+import { products } from '@/lib/products'
+import { pageHead } from '@/lib/brand'
+export const Route = createFileRoute('/gallery')({ head: () => pageHead('Design Gallery | Tricon Cabins & Containers', 'Explore illustrative portable office, shipping container and modular space designs. Discuss your preferred configuration with Tricon.'), component: Gallery })
+function Gallery() {
+  const [selected, setSelected] = useState<(typeof products)[number] | null>(null)
+  const [filter, setFilter] = useState('All concepts')
+  const shown = products.filter(p => filter === 'All concepts' || (filter === 'Containers' ? p.id === 'containers' : p.id !== 'containers'))
+  return <><PageIntro eyebrow="The design gallery" title="SEE THE POSSIBILITIES." description="A closer look at portable-space design concepts, from practical site cabins to considered office interiors." /><section className="section-space"><div className="site-wrap"><div className="mb-8 flex flex-wrap gap-2">{['All concepts', 'Cabins & offices', 'Containers'].map(f => <Button key={f} variant={f === filter ? 'industrial' : 'outline'} onClick={() => setFilter(f)} aria-pressed={f === filter}>{f}</Button>)}</div><div className="grid gap-7 md:grid-cols-2">{shown.map(p => <figure key={p.id}><Button variant="ghost" className="group relative h-auto w-full overflow-hidden rounded-sm p-0" onClick={() => setSelected(p)} aria-label={`View ${p.title}`}><img src={p.image} alt={`${p.title} illustrative concept`} width={1024} height={768} loading="lazy" className="product-image" /><span className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center bg-background"><Expand size={17} /></span></Button><figcaption className="mt-4 flex items-center justify-between"><h2 className="text-2xl">{p.title}</h2><span className="text-xs text-muted-foreground">Design concept</span></figcaption></figure>)}</div><p className="mt-8 text-xs text-muted-foreground">Generated illustrations, not photographs of completed Tricon projects. Actual products and finishes may differ.</p></div></section><Dialog open={Boolean(selected)} onOpenChange={open => { if (!open) setSelected(null) }}><DialogContent className="max-w-4xl"><DialogTitle className="text-3xl">{selected?.title}</DialogTitle>{selected && <img src={selected.image} alt={`${selected.title} design concept`} width={1024} height={768} className="max-h-[70vh] w-full object-contain" />}<p className="text-xs text-muted-foreground">Illustrative design concept</p></DialogContent></Dialog><ContactBand /></>
+}
