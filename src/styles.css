@@ -192,10 +192,12 @@
   .brand-caption { font-size: 8px; letter-spacing: 1px; }
   .hero { height: 650px; min-height: 0; }
   .hero-image { object-position: 63% center; }
-  .hero-content { padding-top: 65px; }
-  .hero-heading { font-size: 62px; max-width: 360px; margin-block: 25px; }
+  .hero-content { padding-top: 50px; }
+  .hero-heading { font-size: 54px; max-width: 360px; margin-block: 25px; }
   .hero-copy { font-size: 16px; max-width: 310px; }
   .hero-bottom { bottom: 24px; }
+  .hero-bottom .hero-note { display: none; }
+  .hero-bottom { justify-content: flex-end; }
   .section-space { padding-block: 56px; }
   .section-heading { font-size: 43px; }
   .page-title { font-size: 58px; }

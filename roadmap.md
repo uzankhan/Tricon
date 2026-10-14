@@ -1,4 +1,4 @@
 # Website roadmap
-- [ ] Research and verify the brand's public information.
-- [ ] Build the premium olive product-collection website.
-- [ ] Verify navigation, enquiries, and mobile presentation.
+- [x] Research public information; Facebook blocked access, so use the user-confirmed Tricon name and WhatsApp number only.
+- [x] Build the premium olive product-collection website.
+- [x] Verify navigation, gallery previews, WhatsApp enquiry preparation, and mobile presentation.
