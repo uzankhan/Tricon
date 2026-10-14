@@ -1,24 +1,28 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from '@tanstack/react-router'
+import { ArrowUpRight, ArrowDown, ShieldCheck, SlidersHorizontal, Truck, Boxes, Check, ArrowRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { ContactBand, ExploreLink } from '@/components/site'
+import { ProductCollection } from '@/components/product-collection'
+import { pageHead, whatsappUrl } from '@/lib/brand'
+import heroImage from '@/assets/modular-office.jpg'
+import cabinImage from '@/assets/portacabin.jpg'
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute('/')({
+  head: () => pageHead('Tricon | Portacabins & Containers', 'Explore Tricon portacabins, shipping containers and custom workspace concepts. Discuss your next project directly on WhatsApp.'),
   component: Index,
-});
+})
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+  return <>
+    <section className="hero">
+      <img className="hero-image" src={heroImage} width={1920} height={1088} alt="Illustrative modern modular office with white panels and large windows" fetchPriority="high" />
+      <div className="site-wrap hero-content reveal"><p className="eyebrow">Tricon · Portacabins & containers</p><h1 className="hero-heading">PORTABLE SPACES.<br />LASTING POSSIBILITIES.</h1><p className="hero-copy">From a site office to your next big idea.<br />Explore practical cabins and container solutions, shaped around your needs.</p><div className="mt-8 flex flex-wrap gap-3"><Button variant="hero" size="premium" asChild><Link to="/products">Explore our products <ArrowUpRight /></Link></Button><Button variant="heroOutline" size="premium" asChild><a href={whatsappUrl()} target="_blank" rel="noreferrer">Discuss your project <ArrowUpRight /></a></Button></div></div>
+      <div className="site-wrap hero-bottom"><div className="hero-note">A space for every possibility<br /><span className="mt-2 block normal-case tracking-normal opacity-70">Work. Store. Create.</span></div><a href="#collection" className="flex items-center gap-3 text-xs" aria-label="Scroll to product collection">Discover Tricon <span className="flex h-10 w-10 items-center justify-center rounded-full border border-hero-foreground/40"><ArrowDown size={16} /></span></a></div>
+    </section>
+    <section className="border-b border-border bg-secondary/35"><div className="site-wrap grid grid-cols-2 gap-x-5 gap-y-7 py-7 md:grid-cols-4">{[{ icon: ShieldCheck, title: 'Practical construction', sub: 'Built for everyday use' }, { icon: SlidersHorizontal, title: 'Flexible configurations', sub: 'A layout for your needs' }, { icon: Truck, title: 'Portable by design', sub: 'Spaces that can move' }, { icon: Boxes, title: 'Versatile applications', sub: 'From offices to storage' }].map(item => <div key={item.title} className="flex items-center gap-3 md:gap-4"><item.icon className="shrink-0 text-primary" size={27} strokeWidth={1.4} /><div><p className="text-[13px] font-semibold">{item.title}</p><p className="mt-1 text-xs text-muted-foreground">{item.sub}</p></div></div>)}</div></section>
+    <section id="collection" className="section-space"><div className="site-wrap"><div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end"><div><p className="eyebrow mb-4 text-primary">Our product collection</p><h2 className="section-heading">THE RIGHT SPACE. FOR YOUR NEXT STEP.</h2></div><ExploreLink /></div><ProductCollection /></div></section>
+    <section className="border-y border-border bg-muted py-20"><div className="site-wrap grid items-center gap-12 md:grid-cols-2"><div className="relative"><img src={cabinImage} alt="Illustrative portable office cabin" width={1024} height={768} loading="lazy" className="aspect-[4/3] w-full rounded-sm object-cover" /><span className="absolute bottom-0 left-0 bg-primary px-6 py-4 font-display text-2xl text-primary-foreground">SMALL FOOTPRINT. BIG POTENTIAL.</span></div><div><p className="eyebrow mb-5 text-primary">The Tricon approach</p><h2 className="section-heading">NOT JUST A CABIN.<br />YOUR SPACE TO MOVE FORWARD.</h2><p className="mt-6 text-base leading-7 text-muted-foreground">Every space begins with a purpose. A place to work, a secure place to store, or a fresh way to use the room you have.</p><p className="mt-4 text-base leading-7 text-muted-foreground">At Tricon, the conversation starts with your requirements — the layout, the application and the details that matter to you.</p><div className="my-7 grid gap-3 text-sm">{['Space planning around your purpose', 'Cabin and container options to explore', 'Direct, straightforward project enquiries'].map(text => <p key={text} className="flex items-center gap-3"><Check size={16} className="text-primary" />{text}</p>)}</div><Button variant="industrial" size="premium" asChild><Link to="/about">Get to know Tricon <ArrowUpRight /></Link></Button></div></div></section>
+    <section className="section-space"><div className="site-wrap"><p className="eyebrow mb-4 text-primary">From idea to conversation</p><div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><h2 className="section-heading">YOUR REQUIREMENT.<br />A CLEAR STARTING POINT.</h2><p className="max-w-sm text-sm leading-6 text-muted-foreground">Tell us what you have in mind. We’ll discuss the details directly, one step at a time.</p></div><div className="grid gap-9 md:grid-cols-3">{[{ n: '01', title: 'Share your idea', text: 'Tell us how you plan to use the space, your location and the size you have in mind.' }, { n: '02', title: 'Explore the options', text: 'Discuss cabin types, container configurations, layouts and the finishes you need.' }, { n: '03', title: 'Plan the next step', text: 'Confirm the project details and discuss availability and delivery arrangements.' }].map(step => <div key={step.n} className="border-t border-border pt-5"><div className="flex items-center justify-between"><span className="font-display text-3xl text-primary">{step.n}</span><ArrowRight size={20} className="text-muted-foreground" /></div><h3 className="mt-5 text-3xl">{step.title}</h3><p className="mt-3 max-w-sm text-sm leading-6 text-muted-foreground">{step.text}</p></div>)}</div></div></section>
+    <ContactBand />
+  </>
 }
