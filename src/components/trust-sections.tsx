@@ -40,7 +40,7 @@ const questions = [
 export function ClientQuestions() {
   const [i, setI] = useState(0)
   useEffect(() => { const t = setInterval(() => setI(v => (v + 1) % questions.length), 6500); return () => clearInterval(t) }, [])
-  const item = questions[i]
+  const item = questions[i] ?? questions[0]!
   return <section className="section-space bg-muted"><div className="site-wrap grid gap-10 md:grid-cols-[1fr_1.4fr] md:items-center">
     <Reveal><p className="eyebrow mb-4 text-primary">What clients ask us</p><h2 className="section-heading">YOUR QUESTIONS. <span className="text-primary">STRAIGHT ANSWERS.</span></h2><p className="mt-5 max-w-sm text-sm leading-6 text-muted-foreground">The questions we hear most often when someone begins planning a portable space.</p></Reveal>
     <Reveal delay={0.15}><div className="glass-card relative min-h-[260px] p-8 md:p-10">
