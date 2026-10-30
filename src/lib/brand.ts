@@ -2,7 +2,7 @@ export const brand = {
   name: 'Tricon Container Trading',
   phone: '+92 333 1220694',
   whatsapp: '923331220694',
-  email: 'uzankhan17@gmail.com',
+  email: 'hamzakhanpersonal@gmail.com',
   facebook: 'https://www.facebook.com/people/Tricon-Container-Trading/100063767394188/',
   logoPath: '/tricon-logo.png',
   streetAddress: 'PLOT NO 31/1, KEMARI AREA HASSAN TERMINAL, NEAR ZIA UDDIN HOSPITAL CLIFTON',
