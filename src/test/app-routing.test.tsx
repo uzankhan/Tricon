@@ -14,4 +14,16 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+
+  it.each([
+    "/portacabin-karachi",
+    "/container-office-lahore",
+    "/portable-cabin-islamabad",
+  ])("matches the local service page %s", (path) => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+
+    const matches = router.matchRoutes(path);
+
+    expect(matches.at(-1)?.routeId).toBe(path);
+  });
 });

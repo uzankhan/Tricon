@@ -12,7 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ContainerOfficeLahoreRouteImport } from './routes/container-office-lahore'
 import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as PortableCabinIslamabadRouteImport } from './routes/portable-cabin-islamabad'
+import { Route as PortacabinKarachiRouteImport } from './routes/portacabin-karachi'
 import { Route as ProductsRouteImport } from './routes/products'
 
 const IndexRoute = IndexRouteImport.update({
@@ -30,9 +33,24 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContainerOfficeLahoreRoute = ContainerOfficeLahoreRouteImport.update({
+  id: '/container-office-lahore',
+  path: '/container-office-lahore',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortableCabinIslamabadRoute = PortableCabinIslamabadRouteImport.update({
+  id: '/portable-cabin-islamabad',
+  path: '/portable-cabin-islamabad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortacabinKarachiRoute = PortacabinKarachiRouteImport.update({
+  id: '/portacabin-karachi',
+  path: '/portacabin-karachi',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductsRoute = ProductsRouteImport.update({
@@ -45,14 +63,20 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/container-office-lahore': typeof ContainerOfficeLahoreRoute
   '/gallery': typeof GalleryRoute
+  '/portable-cabin-islamabad': typeof PortableCabinIslamabadRoute
+  '/portacabin-karachi': typeof PortacabinKarachiRoute
   '/products': typeof ProductsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/container-office-lahore': typeof ContainerOfficeLahoreRoute
   '/gallery': typeof GalleryRoute
+  '/portable-cabin-islamabad': typeof PortableCabinIslamabadRoute
+  '/portacabin-karachi': typeof PortacabinKarachiRoute
   '/products': typeof ProductsRoute
 }
 export interface FileRoutesById {
@@ -60,22 +84,53 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/container-office-lahore': typeof ContainerOfficeLahoreRoute
   '/gallery': typeof GalleryRoute
+  '/portable-cabin-islamabad': typeof PortableCabinIslamabadRoute
+  '/portacabin-karachi': typeof PortacabinKarachiRoute
   '/products': typeof ProductsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/gallery' | '/products'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/container-office-lahore'
+    | '/gallery'
+    | '/portable-cabin-islamabad'
+    | '/portacabin-karachi'
+    | '/products'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/gallery' | '/products'
-  id: '__root__' | '/' | '/about' | '/contact' | '/gallery' | '/products'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/container-office-lahore'
+    | '/gallery'
+    | '/portable-cabin-islamabad'
+    | '/portacabin-karachi'
+    | '/products'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/container-office-lahore'
+    | '/gallery'
+    | '/portable-cabin-islamabad'
+    | '/portacabin-karachi'
+    | '/products'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  ContainerOfficeLahoreRoute: typeof ContainerOfficeLahoreRoute
   GalleryRoute: typeof GalleryRoute
+  PortableCabinIslamabadRoute: typeof PortableCabinIslamabadRoute
+  PortacabinKarachiRoute: typeof PortacabinKarachiRoute
   ProductsRoute: typeof ProductsRoute
 }
 
@@ -102,11 +157,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/container-office-lahore': {
+      id: '/container-office-lahore'
+      path: '/container-office-lahore'
+      fullPath: '/container-office-lahore'
+      preLoaderRoute: typeof ContainerOfficeLahoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gallery': {
       id: '/gallery'
       path: '/gallery'
       fullPath: '/gallery'
       preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portable-cabin-islamabad': {
+      id: '/portable-cabin-islamabad'
+      path: '/portable-cabin-islamabad'
+      fullPath: '/portable-cabin-islamabad'
+      preLoaderRoute: typeof PortableCabinIslamabadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portacabin-karachi': {
+      id: '/portacabin-karachi'
+      path: '/portacabin-karachi'
+      fullPath: '/portacabin-karachi'
+      preLoaderRoute: typeof PortacabinKarachiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/products': {
@@ -123,7 +199,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  ContainerOfficeLahoreRoute: ContainerOfficeLahoreRoute,
   GalleryRoute: GalleryRoute,
+  PortableCabinIslamabadRoute: PortableCabinIslamabadRoute,
+  PortacabinKarachiRoute: PortacabinKarachiRoute,
   ProductsRoute: ProductsRoute,
 }
 export const routeTree = rootRouteImport

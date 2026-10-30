@@ -1,11 +1,17 @@
 import { Link } from '@tanstack/react-router'
 import { useState } from 'react'
-import { ArrowUpRight, Menu, X, MessageCircle, Box, ArrowRight } from 'lucide-react'
+import { ArrowUpRight, Menu, X, MessageCircle, ArrowRight, Facebook, Mail, MapPin, Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { brand, whatsappUrl } from '@/lib/brand'
 
 export function BrandMark() {
-  return <span className="flex items-center gap-3"><span className="flex h-10 w-10 items-center justify-center border-2 border-primary text-primary"><Box size={27} strokeWidth={1.4} /></span><span><span className="brand-name block">TRICON<span className="text-primary">.</span></span><span className="brand-caption block">PORTACABINS & CONTAINERS</span></span></span>
+  return <img
+    src={brand.logoPath}
+    alt="Tricon Container Trading"
+    className="h-[84px] w-[84px] shrink-0 object-contain"
+    width={768}
+    height={768}
+  />
 }
 
 const links = [{ to: '/' as const, label: 'Home' }, { to: '/products' as const, label: 'Our products' }, { to: '/about' as const, label: 'About Tricon' }, { to: '/gallery' as const, label: 'Gallery' }, { to: '/contact' as const, label: 'Contact' }]
@@ -32,7 +38,74 @@ export function ContactBand() {
 }
 
 export function SiteFooter() {
-  return <><footer className="bg-inverse py-14 text-inverse-foreground"><div className="site-wrap"><div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]"><div><Link to="/" aria-label="Tricon home"><BrandMark /></Link><p className="mt-6 max-w-xs text-sm leading-7 opacity-70">Portable spaces. Practical possibilities.<br />Portacabins and containers for your next requirement.</p></div><div><p className="mb-5 text-xs font-semibold uppercase tracking-widest opacity-50">Explore Tricon</p><div className="grid gap-3 text-sm">{links.slice(1).map(link => <Link key={link.to} to={link.to} className="hover:text-primary">{link.label}</Link>)}</div></div><div><p className="mb-5 text-xs font-semibold uppercase tracking-widest opacity-50">Start a conversation</p><a href={whatsappUrl()} target="_blank" rel="noreferrer" className="text-xl">{brand.phone}</a><p className="mt-2 text-sm opacity-60">WhatsApp enquiries</p><a href={brand.facebook} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-3 text-sm">Find us on Facebook <ArrowUpRight size={15} /></a></div></div><div className="mt-12 flex flex-col justify-between gap-3 border-t border-inverse-foreground/15 pt-6 text-xs opacity-50 sm:flex-row"><p>© {new Date().getFullYear()} Tricon. All rights reserved.</p><p>Built around your needs.</p></div></div></footer><Button variant="hero" asChild className="fixed bottom-6 right-6 z-40 h-12 w-12 rounded-full shadow-xl" aria-label="Chat with Tricon on WhatsApp"><a href={whatsappUrl()} target="_blank" rel="noreferrer" title="Chat on WhatsApp"><MessageCircle className="size-6" /></a></Button></>
+  return <>
+    <footer className="mt-20 border-t border-border bg-background pb-8 pt-16">
+      <div className="site-wrap mx-auto max-w-6xl px-4">
+        <div className="mb-12 grid grid-cols-1 gap-12 md:grid-cols-3">
+          <div className="space-y-4">
+            <Link to="/" aria-label="Tricon home" className="inline-block">
+              <BrandMark />
+            </Link>
+            <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
+              Portable spaces. Practical possibilities. Portacabins and containers for your next requirement.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <h4 className="text-lg font-semibold">Get in Touch</h4>
+            <div className="flex flex-col space-y-3">
+              <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground transition-colors hover:text-primary">
+                <span className="rounded-full bg-primary/10 p-2"><MessageCircle className="h-5 w-5 text-primary" /></span>
+                <span>Chat on WhatsApp</span>
+              </a>
+              <a href={`mailto:${brand.email}`} className="flex items-center gap-3 text-muted-foreground transition-colors hover:text-primary">
+                <span className="rounded-full bg-primary/10 p-2"><Mail className="h-5 w-5 text-primary" /></span>
+                <span>{brand.email}</span>
+              </a>
+              <a href={brand.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground transition-colors hover:text-primary">
+                <span className="rounded-full bg-primary/10 p-2"><Facebook className="h-5 w-5 text-primary" /></span>
+                <span>Follow on Facebook</span>
+              </a>
+              <a href={`tel:${brand.phone.replace(/\s/g, '')}`} className="flex items-center gap-3 text-muted-foreground transition-colors hover:text-primary">
+                <span className="rounded-full bg-primary/10 p-2"><Phone className="h-5 w-5 text-primary" /></span>
+                <span>{brand.phone}</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <h4 className="text-lg font-semibold">Our Location</h4>
+            <div className="flex items-start gap-3 text-sm text-muted-foreground">
+              <MapPin className="mt-1 h-5 w-5 shrink-0 text-primary" />
+              <p>{brand.address}</p>
+            </div>
+            <div className="mt-4 h-40 w-full overflow-hidden rounded-xl border border-border">
+              <iframe
+                src={`https://www.google.com/maps?q=${encodeURIComponent(brand.mapQuery)}&output=embed`}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Tricon Location"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-sm text-muted-foreground md:flex-row">
+          <p>© {new Date().getFullYear()} Tricon. All rights reserved.</p>
+          <p>Built around your needs.</p>
+        </div>
+      </div>
+    </footer>
+    <Button variant="hero" asChild className="fixed bottom-6 right-6 z-40 h-12 w-12 rounded-full shadow-xl" aria-label="Chat with Tricon on WhatsApp">
+      <a href={whatsappUrl()} target="_blank" rel="noreferrer" title="Chat on WhatsApp">
+        <MessageCircle className="size-6" />
+      </a>
+    </Button>
+  </>
 }
 
 export function PageIntro({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {

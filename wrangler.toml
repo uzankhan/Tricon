@@ -1,0 +1,4 @@
+name = "tricon-portacabin"
+compatibility_date = "2026-10-26"
+compatibility_flags = ["nodejs_compat"]
+main = ".output/server/index.mjs"

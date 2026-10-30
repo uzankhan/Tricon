@@ -52,14 +52,14 @@ export function ClientQuestions() {
 }
 
 const insights = [
-  { img: cabinImage, tag: 'Guide', title: 'Choosing a site office cabin', text: 'What to consider for size, layout and daily use before you enquire.' },
-  { img: containerImage, tag: 'Insight', title: 'Containers beyond storage', text: 'How steel containers can become workspaces, kiosks and secure stores.' },
-  { img: interiorImage, tag: 'Planning', title: 'Making compact spaces work', text: 'Simple planning ideas for comfort and function in a small footprint.' },
+  { img: cabinImage, tag: 'Guide', title: 'Choosing a site office cabin', text: 'What to consider for size, layout and daily use before you enquire about a porta cabin office in Pakistan.' },
+  { img: containerImage, tag: 'Insight', title: 'Containers beyond storage', text: 'How steel containers can become 20ft container offices, secure stores and practical business spaces.' },
+  { img: interiorImage, tag: 'Planning', title: 'Making compact spaces work', text: 'Simple planning ideas for comfort and function in a furnished office container or modular office cabin.' },
 ]
 
 export function InsightsSection() {
   return <section className="section-space"><div className="site-wrap">
     <Reveal><p className="eyebrow mb-4 text-primary">Insights</p><h2 className="section-heading mb-12">PLAN SMARTER. <span className="text-primary">BUILD BETTER.</span></h2></Reveal>
-    <Stagger className="grid gap-8 md:grid-cols-3">{insights.map(a => <StaggerItem key={a.title}><article className="hover-card overflow-hidden rounded-sm border border-border bg-card"><div className="overflow-hidden"><img src={a.img} alt={`Illustrative concept for ${a.title}`} loading="lazy" width={1024} height={768} className="product-image" /></div><div className="p-6"><p className="product-number uppercase text-primary">{a.tag}</p><h3 className="mt-2 text-2xl">{a.title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{a.text}</p></div></article></StaggerItem>)}</Stagger>
+    <Stagger className="grid gap-8 md:grid-cols-3">{insights.map(a => <StaggerItem key={a.title}><article className="hover-card overflow-hidden rounded-sm border border-border bg-card"><div className="overflow-hidden"><img src={a.img} alt={`${a.title} for portable cabins, container offices and modular workspaces`} loading="lazy" width={1024} height={768} className="product-image" /></div><div className="p-6"><p className="product-number uppercase text-primary">{a.tag}</p><h3 className="mt-2 text-2xl">{a.title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{a.text}</p></div></article></StaggerItem>)}</Stagger>
   </div></section>
 }
