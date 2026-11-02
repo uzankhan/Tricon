@@ -8,6 +8,7 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
+import { GoogleAnalytics } from "tanstack-router-ga4";
 import type { ReactNode } from "react";
 
 import appCss from "../styles.css?url";
@@ -171,6 +172,7 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
+        <GoogleAnalytics measurementId="G-5J0ZNFFT5X" />
         <Scripts />
       </body>
     </html>
