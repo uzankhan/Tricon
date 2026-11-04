@@ -30,7 +30,6 @@
   --sidebar-ring: oklch(0.62 0.09 118);
 }
 
-/* Keep the full-bleed hero image and contrast treatment at every viewport. */
 .hero {
   background-color: var(--background);
 }
@@ -40,16 +39,87 @@
 }
 
 @media (max-width: 640px) {
+  :root,
+  .dark {
+    --background: oklch(0.94 0.008 115);
+    --foreground: oklch(0.17 0.018 145);
+    --card: oklch(0.98 0.005 115);
+    --card-foreground: oklch(0.17 0.018 145);
+    --popover: oklch(0.98 0.005 115);
+    --popover-foreground: oklch(0.17 0.018 145);
+    --primary: oklch(0.57 0.08 118);
+    --primary-foreground: oklch(0.99 0.003 115);
+    --secondary: oklch(0.92 0.02 115);
+    --secondary-foreground: oklch(0.17 0.018 145);
+    --muted: oklch(0.95 0.012 115);
+    --muted-foreground: oklch(0.42 0.01 145);
+    --accent: oklch(0.88 0.015 115);
+    --accent-foreground: oklch(0.17 0.018 145);
+    --border: oklch(0.24 0.015 145 / 18%);
+    --input: oklch(0.24 0.015 145 / 14%);
+  }
+
+  body {
+    background: oklch(0.94 0.008 115);
+    color: var(--foreground);
+  }
+
+  header {
+    background: #0e172b !important;
+    color: #f4f7f3 !important;
+  }
+
+  [aria-label="Mobile navigation"],
+  nav[aria-label="Mobile navigation"] {
+    background: #0e172b !important;
+    color: #f4f7f3 !important;
+    border-top-color: rgba(255,255,255,0.12);
+  }
+
+  .site-wrap {
+    padding-inline: 20px;
+  }
+
   .hero {
-    color: var(--hero-foreground);
+    min-height: 0;
+    height: auto;
+    background: var(--background);
+    color: var(--foreground);
+  }
+
+  .hero::after {
+    background: linear-gradient(90deg, rgba(12, 18, 26, 0.28), rgba(12, 18, 26, 0.12), rgba(12, 18, 26, 0.03));
+  }
+
+  .hero-content {
+    padding-top: 44px;
   }
 
   .hero-heading {
-    font-size: clamp(3.25rem, 12vw, 4.5rem);
+    font-size: clamp(3.3rem, 12vw, 4.8rem);
+    max-width: 100%;
+    margin-block: 20px 22px;
   }
 
-  .site-header-mobile,
-  [aria-label="Mobile navigation"] {
+  .hero-copy,
+  .hero-note,
+  .eyebrow,
+  .hero-bottom,
+  .hero-bottom .hero-note {
     color: var(--foreground);
+    opacity: 1;
+  }
+
+  .hero-bottom .hero-note {
+    display: none;
+  }
+
+  .section-space {
+    padding-block: 64px;
+  }
+
+  .section-heading,
+  .page-title {
+    font-size: clamp(2.7rem, 10vw, 4.1rem);
   }
 }
