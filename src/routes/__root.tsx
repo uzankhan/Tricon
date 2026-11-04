@@ -12,6 +12,7 @@ import { GoogleAnalytics } from "tanstack-router-ga4";
 import type { ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import darkThemeCss from "../dark-theme.css?url";
 import { brand } from "../lib/brand";
 import { SiteHeader, SiteFooter } from '@/components/site';
 import { SmoothScroll } from '@/components/motion';
@@ -141,6 +142,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      {
+        rel: "stylesheet",
+        href: darkThemeCss,
       },
       { rel: "icon", href: brand.logoPath, type: "image/png" },
       { rel: "apple-touch-icon", href: brand.logoPath },
