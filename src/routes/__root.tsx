@@ -4,12 +4,13 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { GoogleAnalytics } from "tanstack-router-ga4";
-import type { ReactNode } from "react";
+import { ReactGAImplementation } from "react-ga4";
+import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import darkThemeCss from "../dark-theme.css?url";
@@ -72,6 +73,31 @@ const localBusinessSchema = {
   },
   sameAs: [brand.facebook],
 };
+
+const analytics = new ReactGAImplementation();
+let analyticsInitialized = false;
+
+function GoogleAnalytics() {
+  const page = useRouterState({
+    select: (state) => `${state.location.pathname}${state.location.searchStr}`,
+  });
+
+  useEffect(() => {
+    if (analyticsInitialized) return;
+    analytics.initialize("G-5J0ZNFFT5X", {
+      gtagOptions: { send_page_view: false },
+    });
+    analyticsInitialized = true;
+  }, []);
+
+  useEffect(() => {
+    if (analyticsInitialized) {
+      analytics.send({ hitType: "pageview", page, title: document.title });
+    }
+  }, [page]);
+
+  return null;
+}
 
 function NotFoundComponent() {
   return (
@@ -177,7 +203,6 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
-        <GoogleAnalytics measurementId="G-5J0ZNFFT5X" />
         <Scripts />
       </body>
     </html>
@@ -190,6 +215,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+      <GoogleAnalytics />
       <SmoothScroll />
       <SiteHeader />
       <main><Outlet /></main>

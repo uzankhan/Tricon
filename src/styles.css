@@ -202,6 +202,7 @@
   .section-heading { font-size: 43px; }
   .page-title { font-size: 58px; }
 }
+@media (max-width: 360px) { .page-title { font-size: 44px; } }
 .section-space { padding-block: 110px; }
 .ken-burns { animation: ken-burns 22s ease-in-out infinite alternate; transform-origin: 60% 40%; }
 @keyframes ken-burns { from { transform: scale(1) translate(0, 0); } to { transform: scale(1.12) translate(-2%, -1%); } }

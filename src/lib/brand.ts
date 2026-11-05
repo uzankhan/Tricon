@@ -64,8 +64,8 @@ export function pageHead(title: string, description: string, path: string) {
     ],
     links: [
       { rel: 'canonical', href: canonicalUrl },
-      { rel: 'alternate', href: canonicalUrl, hreflang: 'en' },
-      { rel: 'alternate', href: canonicalUrl, hreflang: 'en-PK' },
+      { rel: 'alternate', href: canonicalUrl, hrefLang: 'en' },
+      { rel: 'alternate', href: canonicalUrl, hrefLang: 'en-PK' },
     ],
   };
 }
